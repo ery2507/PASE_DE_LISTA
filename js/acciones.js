@@ -46,7 +46,7 @@ $(document).ready(function(e)
 						}
 					else 
 						{
-							var db = openDatabase ("Test", "1.0", "base", 65535);
+							//var db = openDatabase ("Test", "1.0", "base", 65535);
 							alert (msg);
 							var OAlumno=jQuery.parseJSON(msg);
 							alert(OAlumno.alumnos.length);
@@ -55,6 +55,7 @@ $(document).ready(function(e)
 								
 								var Tope = OAlumno.alumnos.length;
 								for (var i=0; i<Tope;i++)
+								alert("for");
 									{ var NC = OAlumno.alumnos[i].NoControl.val();
 								var N = OAlumno.alumnos[i].Nombre.val();
 								var AP = OAlumno.alumnos[i].ApellidoP.val();
