@@ -12,7 +12,7 @@ $(document).ready(function(e)
 		 alert ("base de datos Creada");
 		    });//Crear
 		 $("#Tabla").bind("click", function (event)
-		   {
+		   {var db = openDatabase ("Test", "1.0", "base", 65535);
 			   alert ("TABLA");
 			 db.transaction(function (ejecutar)
 			   {
