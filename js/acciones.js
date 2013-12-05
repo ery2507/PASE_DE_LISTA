@@ -16,7 +16,9 @@ $(document).ready(function(e)
 			   alert ("TABLA");
 			 db.transaction(function (ejecutar)
 			   {
+				   alert("alumnos");
 				var SQL = "CREATE TABLE Alumnos (NoControl VARCHAR(14) NOT NULL PRIMARY KEY, Nombre VARCHAR(40) NOT NULL, ApellidoP VARCHAR(30) NOT NULL, ApellidoM VARCHAR(30), Grupo VARCHAR(2) NOT NULL )"
+				alert("despues de crear tabla");
 		    	ejecutar.executeSql (SQL, undefined, function () 
 					{ 
       				alert ("Tabla Alumnos creada");
