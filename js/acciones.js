@@ -13,9 +13,10 @@ $(document).ready(function(e)
 		    });//Crear
 		 $("#Tabla").bind("click", function (event)
 		   {
+			   alert ("TABLA");
 			 db.transaction(function (ejecutar)
 			   {
-				var SQL = "CREATE TABLE Alumnos (No_Control varchar(14) NOT NULL PRIMARY KEY, Nombre varchar(40) NOT NULL, ApellidoP varchar(30) NOT NULL, ApellidoM varchar(30), Grupo varchar(2)NOT NULL )";
+				var SQL = "CREATE TABLE Alumnos (No_Control varchar(14) NOT NULL PRIMARY KEY, Nombre varchar(40) NOT NULL, ApellidoP varchar(30) NOT NULL, ApellidoM varchar(30), Grupo varchar(2) NOT NULL )";
 		    	ejecutar.executeSql (SQL, undefined, function () 
 					{ 
       				alert ("Tabla Alumnos creada");
