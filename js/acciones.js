@@ -52,7 +52,10 @@ $(document).ready(function(e)
 							alert(OAlumno.alumnos.length);
 							db.transaction(function(ejecutar){
 								var SQL = "INSERT INTO Alumnos (NoControl, Nombre, ApellidoP, ApellidoM, Grupo) VALUES (?,?,?,?,?)";
-								var NC = OAlumno.alumnos[i].NoControl.val();
+								
+								var Tope = OAlumno.alumnos.length;
+								for (var i=0; i<Tope;i++)
+									{ var NC = OAlumno.alumnos[i].NoControl.val();
 								var N = OAlumno.alumnos[i].Nombre.val();
 								var AP = OAlumno.alumnos[i].ApellidoP.val();
 								var AM = OAlumno.alumnos[i].ApellidoM.val();
@@ -61,9 +64,7 @@ $(document).ready(function(e)
 								alert (AP);
 								alert (AM);
 								alert (Gpo);
-								var Tope = OAlumno.alumnos.length;
-								for (var i=0; i<Tope;i++)
-									{ alert ("Vuelta: " + i);
+								alert ("Vuelta: " + i);
 										ejecutar.executeSql(SQL,[NC,N ,AP, AM,Gpo], function(){alert("Alumno :" + N +" agregado");}, error);
 									}
 								});
