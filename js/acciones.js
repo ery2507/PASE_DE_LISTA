@@ -16,32 +16,17 @@ $(document).ready(function(e)
 			   alert ("TABLA");
 			 db.transaction(function (ejecutar)
 			   {
-				var SQL = "CREATE TABLE Alumnos (No_Control varchar(14) NOT NULL PRIMARY KEY, Nombre varchar(40) NOT NULL, ApellidoP varchar(30) NOT NULL, ApellidoM varchar(30), Grupo varchar(2) NOT NULL )";
+				var SQL = "CREATE TABLE Alumnos (NoControl VARCHAR(14) NOT NULL PRIMARY KEY, Nombre VARCHAR(40) NOT NULL, ApellidoP VARCHAR(30) NOT NULL, ApellidoM VARCHAR(30), Grupo VARCHAR(2) NOT NULL )"
 		    	ejecutar.executeSql (SQL, undefined, function () 
 					{ 
       				alert ("Tabla Alumnos creada");
     				}, error);//executesql
 				});
-				 db.transaction(function (ejecutar)
-			   		{
-					var SQL = "CREATE TABLE Grupos (Grupo varchar(2)NOT NULL, Activo integer, Asignatura varchar(10))";
-		    		ejecutar.executeSql (SQL, undefined, function () 
-			{ 
-      			alert ("Tabla Grupos creada");
-    		}, error);//executesql
-		   });
-		    db.transaction(function (ejecutar)
-			   {
-			var SQL = "CREATE TABLE Asignaturas (Asignatura varchar(10), NombreA Text )";
-		    ejecutar.executeSql (SQL, undefined, function () 
-			{ 
-      			alert ("Tabla Asignatura creada");
-    		}, error);//executesql
-  });
+			
 		   });//Tabla
 		   function error (ejecutar, err)
 		   {
-			   alert ("Error de Base de Datos:" + err.message);
+			   alert ("Error de Base de Datos: " + err.message);
 			   return false;
 			   }//error
          }, false);//deviceready
