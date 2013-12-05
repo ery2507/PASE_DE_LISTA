@@ -14,22 +14,6 @@ $(document).ready(function(e)
                            alert ("base de datos creada");
                   });//Ejecutar
 		     });//Crear
-		 $("#Tabla").bind ("click", function (event)
-		    db.transaction (function (ejecutar) 
-                  {
-                   var sql = "CREATE TABLE Lista (id INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, nombre VARCHAR(100) NOT NULL, apellido VARCHAR(100) NOT NULL)";
-                    ejecutar.executeSql (sql, undefined, function () 
-                        { 
-                              alert ("Tabla creada");
-                    }, error);//executesql
-                  });//Ejecutar
-				  });//Tabla
-
-          function error (transaction, err) {
-          alert ("Error de Base de Datos : " + err.message);
-           return false;
-        }//funcion error 
-        
-          
-  }, false);//deviceready
+		 $
+         }, false);//deviceready
 });//documen
