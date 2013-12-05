@@ -1,4 +1,5 @@
 // JavaScript Document
+var IP="";
 $(document).ready(function(e) 
 {
   document.addEventListener("deviceready",function()
@@ -24,13 +25,52 @@ $(document).ready(function(e)
       				alert ("Tabla Alumnos creada");
     				}, error);//executesql
 				});
-			
+			buscaralumnos('5J');
 		   });//Tabla
 		   function error (ejecutar, err)
 		   {
 			   alert ("Error de Base de Datos: " + err.message);
 			   return false;
 			   }//error
+	      function buscaralumnos(Gpo)
+		  	{
+				datos="Grupo="+Gpo;
+				$.ajax({
+					type:"POST",
+					url:"http://192.168.1.10/lista/agregar.php",
+					data:datos
+				}).done(function (msg){
+					if(msg=="*" || msg == null)
+						{
+							alert ("NO SE ENCONTRARON ALUMNOS EN ESE GRUPO");
+						}
+					else 
+						{
+							var db = openDatabase ("Test", "1.0", "base", 65535);
+							alert (msg);
+							var OAlumno=jQuery.parseJSON(msg);
+							alert(OAlumno.alumnos.length);
+							db.transaction(function(ejecutar){
+								var SQL = "INSERT INTO Alumnos (NoControl, Nombre, ApellidoP, ApellidoM, Grupo) VALUES (?,?,?,?,?)";
+								var NC = OAlumno.alumnos[i].NoControl.val();
+								var N = OAlumno.alumnos[i].Nombre.val();
+								var AP = OAlumno.alumnos[i].ApellidoP.val();
+								var AM = OAlumno.alumnos[i].ApellidoM.val();
+								alert (NC);
+								alert (N);
+								alert (AP);
+								alert (AM);
+								alert (Gpo);
+								var Tope = OAlumno.alumnos.length;
+								for (var i=0; i<Tope;i++)
+									{ alert ("Vuelta: " + i);
+										ejecutar.executeSql(SQL,[NC,N ,AP, AM,Gpo], function(){alert("Alumno :" + N +" agregado");}, error);
+									}
+								});
+							}//else
+				});
+			  }
+			   
          }, false);//deviceready
 });//documen
 
